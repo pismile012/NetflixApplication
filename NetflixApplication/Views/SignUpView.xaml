@@ -24,7 +24,7 @@
             <Image Source="..\Img\Logo.png" Width="200" Height="112" HorizontalAlignment="Left"/>
             <Button  Style="{StaticResource MaterialDesignRaisedDarkButton}"
                      ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" 
-                     Content="LOGIN" Background="Red" Width="150" Height="50" HorizontalAlignment="Right" Margin="20 0"/>
+                     Content="LOGIN" Background="Red" Width="150" Height="50" HorizontalAlignment="Right" Margin="20 0" Click="ReturnLoginPage"/>
         </DockPanel>
         <materialDesign:Card VerticalAlignment="Center" HorizontalAlignment="Center" Width="293" Height="462" Grid.Row="1" Margin="486,10,493,57">
             <Grid Margin="20">

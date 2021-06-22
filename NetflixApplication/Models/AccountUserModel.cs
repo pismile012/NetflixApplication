@@ -118,5 +118,6 @@ namespace NetflixApplication.Models
                 _Customer_Status = value;
             }
         }
+
     }
 }

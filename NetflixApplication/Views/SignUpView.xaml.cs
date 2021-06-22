@@ -23,5 +23,12 @@ namespace NetflixApplication.Views
         {
             InitializeComponent();
         }
+
+        private void ReturnLoginPage(object sender, RoutedEventArgs e)
+        {
+            SignInView signInView = new SignInView();
+            signInView.Show();
+            this.Close();
+        }
     }
 }

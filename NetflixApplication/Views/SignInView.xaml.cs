@@ -23,5 +23,12 @@ namespace NetflixApplication.Views
         {
             InitializeComponent();
         }
+
+        private void ReturnSignUpPage(object sender, RoutedEventArgs e)
+        {
+            SignUpView signUpView = new SignUpView();
+            signUpView.Show();
+            this.Close();
+        }
     }
 }
