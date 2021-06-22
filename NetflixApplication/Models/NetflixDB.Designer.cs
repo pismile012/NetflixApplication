@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Zolo\Desktop\DEL\NetflixApplication\NetflixApplication\Models\NetflixDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\19lev\OneDrive\Desktop\Project\NetflixApplication\NetflixApplication\Models\NetflixDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

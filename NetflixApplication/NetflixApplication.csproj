@@ -72,15 +72,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\AccountUserModel.cs" />
     <Compile Include="Models\Actor.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConnectSQL.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
