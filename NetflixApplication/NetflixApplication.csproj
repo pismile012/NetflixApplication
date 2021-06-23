@@ -87,6 +87,7 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\Director.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
@@ -124,6 +125,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
