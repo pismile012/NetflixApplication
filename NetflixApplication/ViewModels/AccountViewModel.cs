@@ -17,10 +17,10 @@ namespace NetflixApplication.ViewModels
     class AccountViewModel : BaseViewModel
     {
         public bool IsLogin { get; set; }
-        private string _UserName;
-        public string UserName { get => _UserName; set { _UserName = value; OnPropertyChanged(); } }
-        private string _Password;
-        public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
+        private string _Account_Email;
+        public string Account_Email { get => _Account_Email; set { _Account_Email = value; OnPropertyChanged(); } }
+        private string _Account_Password;
+        public string Account_Password { get => _Account_Password; set { _Account_Password = value; OnPropertyChanged(); } }
 
         public ICommand CloseCommand { get; set; }
         public ICommand LoginCommand { get; set; }
@@ -28,11 +28,11 @@ namespace NetflixApplication.ViewModels
         public AccountViewModel()
         {
             IsLogin = false;
-            Password = "";
-            UserName = "";
+            Account_Password = "";
+            Account_Email = "";
             LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { Login(p); });
             CloseCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
-            PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
+            PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Account_Password = p.Password; });
         }
 
 
@@ -64,7 +64,7 @@ namespace NetflixApplication.ViewModels
                 return;
             }
 
-
+            
         }
     }
 }
