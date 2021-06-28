@@ -1,0 +1,98 @@
+﻿<Page x:Class="NetflixApplication.Views.SignUp3View"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NetflixApplication.Views"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="24"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="530" Width="1280"
+        Title="SignUp3View">
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <StackPanel  Margin="60" Width="550">
+            <StackPanel.Resources>
+                <Style TargetType="RadioButton">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Width" Value="550"/>
+                    <Setter Property="Foreground" Value="IndianRed"/>
+                    <Setter Property="FontSize" Value="28"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="Red"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock FontSize="28">STEP <Bold>1</Bold> of <Bold>2</Bold></TextBlock>
+            <TextBlock Text="Set up your credit or debit card" FontSize="40" Margin="0 0 0 30"/>
+            <TextBox materialDesign:HintAssist.Hint="Card Number"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center"/>
+            <DatePicker  materialDesign:HintAssist.Hint="Expiration date (MM/YY)"
+                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            <TextBox materialDesign:HintAssist.Hint="Security code (CVV)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center"/>
+            <TextBlock FontSize="28" Margin="0 60 0 0">STEP <Bold>2</Bold> of <Bold>2</Bold></TextBlock>
+            <TextBlock Text="Choose a plan. You can always change or cancel." TextWrapping="Wrap" FontSize="40" FontWeight="Bold" Margin="0 0 0 40"/>
+            <RadioButton IsChecked="True">
+                <RadioButton.Content>
+                    <Grid Margin="0 -8 0 0 " Width="530">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Basic"/>
+                        <TextBlock Text="120.000đ" HorizontalAlignment="Right" Grid.Column="1"/>
+                        <TextBlock Text="1 month" HorizontalAlignment="Right" Grid.Column="2"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton>
+                <RadioButton.Content>
+                    <Grid Margin="0 -8 0 0 " Width="530">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Standard"/>
+                        <TextBlock Text="680.000đ" HorizontalAlignment="Right" Grid.Column="1"/>
+                        <TextBlock Text="6 month" HorizontalAlignment="Right" Grid.Column="2"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton>
+                <RadioButton.Content>
+                    <Grid Margin="0 -8 0 0 " Width="530">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Premium"/>
+                        <TextBlock Text="1.200.000đ" HorizontalAlignment="Right" Grid.Column="1"/>
+                        <TextBlock Text="12 month" HorizontalAlignment="Right" Grid.Column="2"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
+            <StackPanel Orientation="Horizontal">
+                <Button Background="Red" Width="200" Height="50" Click="Pre_Click" Margin="0 0 120 0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="ChevronLeft" Foreground="White" VerticalAlignment="Center" Width="30" Height="30"/>
+                        <TextBlock Text="PREV" Foreground="White" FontSize="30"/>
+                    </StackPanel>
+                </Button>
+                <Button Content="FINISH" Margin="30" Width="200" Height="50"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    Background="Red" FontSize="30" FontWeight="Bold"/>
+            </StackPanel>            
+        </StackPanel>
+    </ScrollViewer>    
+</Page>
