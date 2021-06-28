@@ -118,26 +118,48 @@
     <Compile Include="Models\Rental.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="test.xaml.cs">
-      <DependentUpon>test.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Validation_Rule\EmailRule.cs" />
+    <Compile Include="Validation_Rule\PasswordRule.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MyListViewModel.cs" />
+    <Compile Include="ViewModels\SignUp1ViewModel.cs" />
+    <Compile Include="ViewModels\SignUp2ViewModel.cs" />
+    <Compile Include="ViewModels\SignUpViewModel.cs" />
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyListView.xaml.cs">
+      <DependentUpon>MyListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PasswordBoxCustom.xaml.cs">
+      <DependentUpon>PasswordBoxCustom.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SignUp1View.xaml.cs">
+      <DependentUpon>SignUp1View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignUp2View.xaml.cs">
+      <DependentUpon>SignUp2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignUp3View.xaml.cs">
+      <DependentUpon>SignUp3View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SignUpView.xaml.cs">
       <DependentUpon>SignUpView.xaml</DependentUpon>
     </Compile>
-    <Page Include="test.xaml">
+    <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,7 +167,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MyListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PasswordBoxCustom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SignInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SignUp1View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SignUp2View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SignUp3View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,9 +232,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Img\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="File\Logo.png" />
+    <Resource Include="File\Smart-TV.png" />
+    <Resource Include="File\netflix-mobile.png" />
+    <Resource Include="File\tab.png" />
+    <Resource Include="File\Phone.jpg" />
     <Content Include="Models\NetflixDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NetflixDB.Context.cs</LastGenOutput>

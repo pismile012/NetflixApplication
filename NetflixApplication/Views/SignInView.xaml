@@ -21,7 +21,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DockPanel>
-            <Image Source="..\Img\Logo.png" Width="200" Height="112" HorizontalAlignment="Left"/>
+            <Image Source="..\File\Logo.png" Width="200" Height="112" HorizontalAlignment="Left"/>
             <Button  Style="{StaticResource MaterialDesignRaisedDarkButton}"
                      ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" 
                      Content="SIGN UP" Background="Red" Width="150" Height="50" HorizontalAlignment="Right" Margin="20 0" Click="ReturnSignUpPage"/>

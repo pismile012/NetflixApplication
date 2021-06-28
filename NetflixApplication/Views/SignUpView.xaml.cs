@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetflixApplication.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace NetflixApplication.Views
     /// </summary>
     public partial class SignUpView : Window
     {
+        SignUpViewModel vm;
         public SignUpView()
         {
             InitializeComponent();
+            Loaded += Window_Loaded;
+            
         }
 
         private void ReturnLoginPage(object sender, RoutedEventArgs e)
@@ -29,6 +33,11 @@ namespace NetflixApplication.Views
             SignInView signInView = new SignInView();
             signInView.Show();
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new SignUp1View());
         }
     }
 }
