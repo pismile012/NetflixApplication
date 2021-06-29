@@ -64,7 +64,18 @@ namespace NetflixApplication.ViewModels
                 return;
             }
 
-            
+            /*var accCount = DataProvider.Ins.DB.Customers.Where().Count();
+            if (accCount > 0)
+            {
+                IsLogin = true;
+
+                p.Close();
+            }
+            else
+            {
+                IsLogin = false;
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
+            }*/
         }
     }
 }
