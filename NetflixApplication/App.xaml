@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:NetflixApplication"
              xmlns:v="clr-namespace:NetflixApplication.Views"
              xmlns:vm="clr-namespace:NetflixApplication.ViewModels"
-             StartupUri="Views/MainView.xaml">
+             StartupUri="Views/SignInView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
