@@ -17,8 +17,7 @@
         WindowStartupLocation="CenterScreen"
         Title="VideoPlay" Height="680" Width="1280">
     <Window.CommandBindings>
-        <CommandBinding Command="MediaCommands.Play" CanExecute="Play_CanExecute" Executed="Play_Executed" />
-        <CommandBinding Command="MediaCommands.Pause" CanExecute="Pause_CanExecute" Executed="Pause_Executed" />
+
     </Window.CommandBindings>
 
     <Grid>
@@ -84,7 +83,7 @@
                     </StackPanel>
                 </Grid>
             </materialDesign:Card>
-            <Grid MouseWheel="Grid_MouseWheel" Grid.Row="2">
+            <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -118,7 +117,7 @@
                         <TextBlock Name="lblProgressStatus">00:00:00</TextBlock>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
-                        <Slider Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" />
+                        <Slider Name="sliProgress"/>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="2">
                         <ProgressBar Name="pbVolume" Width="50" Height="12" Maximum="1" Value="{Binding ElementName=mePlayer, Path=Volume}" />
