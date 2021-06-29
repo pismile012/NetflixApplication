@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\SignUp1ViewModel.cs" />
     <Compile Include="ViewModels\SignUp2ViewModel.cs" />
     <Compile Include="ViewModels\SignUpViewModel.cs" />
+    <Compile Include="ViewModels\VideoPlayModel.cs" />
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
@@ -158,6 +159,9 @@
     </Compile>
     <Compile Include="Views\SignUpView.xaml.cs">
       <DependentUpon>SignUpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VideoPlay.xaml.cs">
+      <DependentUpon>VideoPlay.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
@@ -192,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SignUpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VideoPlay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,11 +240,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Views\pause.png" />
+    <Resource Include="Views\play.png" />
     <Resource Include="File\Logo.png" />
     <Resource Include="File\Smart-TV.png" />
     <Resource Include="File\netflix-mobile.png" />
     <Resource Include="File\tab.png" />
     <Resource Include="File\Phone.jpg" />
+    <Resource Include="File\play.png" />
     <Content Include="Models\NetflixDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NetflixDB.Context.cs</LastGenOutput>
