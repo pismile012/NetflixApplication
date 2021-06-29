@@ -23,59 +23,59 @@ namespace NetflixApplication.ViewModels
 			timer.Start();
 		}
 
-		private void timer_Tick(object sender, EventArgs e)
-		{
-			if ((mePlayer.Source != null) && (mePlayer.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
-			{
-				sliProgress.Minimum = 0;
-				sliProgress.Maximum = mePlayer.NaturalDuration.TimeSpan.TotalSeconds;
-				sliProgress.Value = mePlayer.Position.TotalSeconds;
-			}
-		}
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            //	if ((mePlayer.Source != null) && (mePlayer.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
+            //	{
+            //		sliProgress.Minimum = 0;
+            //		sliProgress.Maximum = mePlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            //		sliProgress.Value = mePlayer.Position.TotalSeconds;
+            //	}
+        }
 
-		private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-		{
-			e.CanExecute = (mePlayer != null) && (mePlayer.Source != null);
-		}
+        //private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        //{
+        //	e.CanExecute = (mePlayer != null) && (mePlayer.Source != null);
+        //}
 
-		private void Play_Executed(object sender, ExecutedRoutedEventArgs e)
-		{
-			mePlayer.Play();
-			mediaPlayerIsPlaying = true;
-		}
+        //private void Play_Executed(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //	mePlayer.Play();
+        //	mediaPlayerIsPlaying = true;
+        //}
 
-		private void Pause_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-		{
-			e.CanExecute = mediaPlayerIsPlaying;
-		}
+        //private void Pause_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        //{
+        //	e.CanExecute = mediaPlayerIsPlaying;
+        //}
 
-		private void Pause_Executed(object sender, ExecutedRoutedEventArgs e)
-		{
-			mePlayer.Pause();
-		}
-
-
+        //private void Pause_Executed(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //	mePlayer.Pause();
+        //}
 
 
-		private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
-		{
-			userIsDraggingSlider = true;
-		}
 
-		private void sliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
-		{
-			userIsDraggingSlider = false;
-			mePlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
-		}
 
-		private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-		{
-			lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
-		}
+        //private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
+        //{
+        //	userIsDraggingSlider = true;
+        //}
 
-		private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
-		{
-			mePlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
-		}
-	}
+        //private void sliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
+        //{
+        //	userIsDraggingSlider = false;
+        //	mePlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
+        //}
+
+        //private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        //{
+        //	lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
+        //}
+
+        //private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
+        //{
+        //	mePlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
+        //}
+    }
 }
