@@ -61,6 +61,7 @@ namespace NetflixApplication.ViewModels
         {
             if (p == null)
             {
+                MessageBox.Show("Vui lòng nhập email và password!");
                 return;
             }
 
@@ -70,12 +71,12 @@ namespace NetflixApplication.ViewModels
                 IsLogin = true;
 
                 p.Close();
-            }
+            }*/
             else
             {
                 IsLogin = false;
                 MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
-            }*/
+            }
         }
     }
 }

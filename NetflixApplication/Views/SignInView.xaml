@@ -58,7 +58,9 @@
                 <StackPanel Grid.Row="3" HorizontalAlignment="Center">
                     <Button Style="{StaticResource MaterialDesignFlatButton}"
                             ToolTip="MaterialDesignFlatButton" Content="Forgot Password?" HorizontalAlignment="Right" FontSize="10" Height="20" Margin="0 10"/>
-                    <Button  Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="SIGN IN" Background="Red" Width="200"/>
+                    <Button Command="{Binding LoginCommand}"
+                            CommandParameter="{Binding ElementName=loginWindow}" 
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="SIGN IN" Background="Red" Width="200"/>
                     <TextBlock Text="Design by Student HCMUS @2021" Margin="20" FontSize="10"/>
                 </StackPanel>
             </Grid>
