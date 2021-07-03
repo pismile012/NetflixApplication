@@ -10,15 +10,10 @@
 namespace NetflixApplication.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Rental
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int Rental_ID { get; set; }
-        public Nullable<int> Rental_Date { get; set; }
-        public Nullable<int> Return_Date { get; set; }
-        public int Customer_ID { get; set; }
-    
-        public virtual Account Account { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

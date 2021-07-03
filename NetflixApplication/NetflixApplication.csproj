@@ -78,11 +78,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\AccountUserModel.cs" />
-    <Compile Include="Models\Actor.cs">
+    <Compile Include="Models\Account.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs">
+    <Compile Include="Models\AccountUserModel.cs" />
+    <Compile Include="Models\Actor.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminModel.cs" />
@@ -90,17 +90,14 @@
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConnectSQL.cs" />
-    <Compile Include="Models\Customer.cs">
-      <DependentUpon>NetflixDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\Director.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Inventory.cs">
+    <Compile Include="Models\Movie.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Movie.cs">
+    <Compile Include="Models\MyList.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NetflixDB.Context.cs">
@@ -118,7 +115,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NetflixDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Queue.cs">
+    <Compile Include="Models\Rating.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rental.cs">
@@ -127,6 +124,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>NetflixDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>NetflixDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Validation_Rule\EmailRule.cs" />
     <Compile Include="Validation_Rule\PasswordRule.cs" />

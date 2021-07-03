@@ -12,22 +12,29 @@ namespace NetflixApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Inventory
+    public partial class Account
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Inventory()
+        public Account()
         {
-            this.Queues = new HashSet<Queue>();
+            this.MyLists = new HashSet<MyList>();
+            this.Ratings = new HashSet<Rating>();
             this.Rentals = new HashSet<Rental>();
         }
     
-        public int Inventory_ID { get; set; }
-        public string Inventory_Stock { get; set; }
-        public int Movie_ID { get; set; }
+        public int Account_ID { get; set; }
+        public string Account_FName { get; set; }
+        public string Account_LName { get; set; }
+        public string Account_Email { get; set; }
+        public string Account_Phone { get; set; }
+        public string Account_Address { get; set; }
+        public string Account_Password { get; set; }
+        public string Account_Type { get; set; }
     
-        public virtual Movie Movie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Queue> Queues { get; set; }
+        public virtual ICollection<MyList> MyLists { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rating> Ratings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rental> Rentals { get; set; }
     }

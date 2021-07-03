@@ -12,15 +12,12 @@ namespace NetflixApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Queue
+    public partial class sysdiagram
     {
-        public int Queue_ID { get; set; }
-        public int Inventory_ID { get; set; }
-        public int Customer_ID { get; set; }
-        public Nullable<System.DateTime> Date_Add { get; set; }
-        public string Status { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual Inventory Inventory { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

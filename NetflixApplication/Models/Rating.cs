@@ -12,13 +12,13 @@ namespace NetflixApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Rental
+    public partial class Rating
     {
-        public int Rental_ID { get; set; }
-        public Nullable<int> Rental_Date { get; set; }
-        public Nullable<int> Return_Date { get; set; }
         public int Customer_ID { get; set; }
+        public int Movie_ID { get; set; }
+        public Nullable<int> Rating_Point { get; set; }
     
         public virtual Account Account { get; set; }
+        public virtual Movie Movie { get; set; }
     }
 }

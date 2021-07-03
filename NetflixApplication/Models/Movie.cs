@@ -17,8 +17,8 @@ namespace NetflixApplication.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Movie()
         {
-            this.Inventories = new HashSet<Inventory>();
-            this.Admins = new HashSet<Admin>();
+            this.MyLists = new HashSet<MyList>();
+            this.Ratings = new HashSet<Rating>();
             this.Directors = new HashSet<Director>();
             this.Actors = new HashSet<Actor>();
         }
@@ -29,14 +29,15 @@ namespace NetflixApplication.Models
         public Nullable<double> Movie_Lenght { get; set; }
         public Nullable<int> Movie_Year { get; set; }
         public string Movie_Describe { get; set; }
+        public byte[] Movie_Posting { get; set; }
         public string Movie_Trailer { get; set; }
-        public Nullable<int> Movie_View { get; set; }
+        public byte[] Movie_View { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory> Inventories { get; set; }
+        public virtual ICollection<MyList> MyLists { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Admin> Admins { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Director> Directors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
