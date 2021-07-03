@@ -48,12 +48,12 @@
                 <TextBox materialDesign:HintAssist.Hint="User name" Text="{Binding Account_Email}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Grid.Row="1"/>
                 <PasswordBox x:Name="FloatingPasswordBox" materialDesign:HintAssist.Hint="Password"                               
                                  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.Row="2">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="PasswordChanged">
-                            <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
-                                   CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
+                                                   CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                 </PasswordBox>
                 <StackPanel Grid.Row="3" HorizontalAlignment="Center">
                     <Button Style="{StaticResource MaterialDesignFlatButton}"

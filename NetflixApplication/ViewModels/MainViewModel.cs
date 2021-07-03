@@ -5,12 +5,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace NetflixApplication.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        public bool Isloaded = false;
+        public ICommand LoadedWindowCommand { get; set; }
         public ICommand HomeViewCommand { get; set; }
         public ICommand MyListViewCommand { get; set; }
 
@@ -30,6 +33,28 @@ namespace NetflixApplication.ViewModels
         }
         public MainViewModel()
         {
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                Isloaded = true;
+                if (p == null)
+                    return;
+                p.Hide();
+                SignInView loginWindow = new SignInView();
+                loginWindow.ShowDialog();
+
+                if (loginWindow.DataContext == null)
+                    return;
+                var loginVM = loginWindow.DataContext as AccountViewModel;
+
+                if (loginVM.IsLogin)
+                {
+                    p.Show();
+                }
+                else
+                {
+                    p.Close();
+                }
+            }
+              );
             HomeVM = new HomeViewModel();
             MyListVM = new MyListViewModel();            
 
