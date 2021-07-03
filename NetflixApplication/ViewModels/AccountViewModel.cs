@@ -60,17 +60,13 @@ namespace NetflixApplication.ViewModels
         void Login(Window p)
         {
             if (p == null)
-            {
-                MessageBox.Show("Vui lòng nhập email và password!");
                 return;
-            }
             string passEncode = MD5Hash(Base64Encode(Account_Password));
             var accCount = DataProvider.Ins.DB.Accounts.Where(x => x.Account_Email == Account_Email && x.Account_Password == passEncode).Count();
             if (accCount > 0)
             {
                 IsLogin = true;
-
-                p.Close();
+                MessageBox.Show("DN thành công");
             }
             else
             {
