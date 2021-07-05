@@ -5,6 +5,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetflixApplication.Views"
+        xmlns:rule="clr-namespace:NetflixApplication.Validation_Rule"
         xmlns:VM="clr-namespace:NetflixApplication.ViewModels"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -46,7 +47,15 @@
                     </Style>
                 </Grid.Resources>
                 <TextBlock Text="SIGN IN" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
-                <TextBox materialDesign:HintAssist.Hint="User name" Text="{Binding Account_Email}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Grid.Row="1"/>
+                <TextBox materialDesign:HintAssist.Hint="Email Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Grid.Row="1">
+                    <TextBox.Text>
+                        <Binding Path="Account_Email" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <rule:EmailRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 <PasswordBox x:Name="FloatingPasswordBox" materialDesign:HintAssist.Hint="Password"                               
                                  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.Row="2">
                                 <i:Interaction.Triggers>

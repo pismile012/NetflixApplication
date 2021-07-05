@@ -16,7 +16,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="560" Width="1260"      
-      Title="SignUp1View">
+      Title="SignUp1View"
+      Name="signUpWindow">
     <Page.DataContext>
         <vm:SignUp1ViewModel/>
     </Page.DataContext>    
@@ -48,7 +49,7 @@
                 <TextBlock Text="Ready to watch? Enter your email to create or restart your membership."/>
                 <StackPanel Orientation="Horizontal">
                     <TextBox materialDesign:HintAssist.Hint="Email Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
-                                 VerticalAlignment="Center" Width="600">
+                                 VerticalAlignment="Center" Width="600" >
                         <TextBox.Text>
                             <Binding Path="Email" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
@@ -59,7 +60,9 @@
                     </TextBox>
                     <Button Width="200" Background="Red" Content="Get Started" FontSize="28"
                             Foreground="White" FontWeight="Bold" BorderThickness="0" Height="50"
-                            Command="{Binding SignUp2Command}" Click="Button_Click"/>
+                            Command="{Binding SignUpCommand}"
+                            IsDefault="True"
+                            CommandParameter="{Binding ElementName=signUpWindow}"/>
                 </StackPanel>
             </StackPanel>
             <Border BorderBrush="DarkGray" BorderThickness="0 3 0 0" Grid.Row="1">
