@@ -67,6 +67,8 @@ namespace NetflixApplication.ViewModels
             {
                 IsLogin = true;
                 MessageBox.Show("DN thành công");
+                p.Close();
+                
             }
             else
             {

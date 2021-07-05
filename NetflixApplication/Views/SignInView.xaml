@@ -16,7 +16,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        Title="Sign In" Height="680" Width="1280">
+        Title="Sign In" Height="680" Width="1280"
+        Name="loginWindow">
     <Window.DataContext>
         <VM:AccountViewModel/>
     </Window.DataContext>
