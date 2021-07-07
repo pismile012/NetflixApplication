@@ -17,7 +17,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="560" Width="1280"
-      Title="SignUp2View">
+      Title="SignUp2View"
+      Name="signUp2Window">
     <Page.DataContext>
         <vm:SignUp2ViewModel/>
     </Page.DataContext>
@@ -38,14 +39,14 @@
                 </Grid.Resources>
                 <TextBlock Text="SIGN UP" FontWeight="Bold" FontSize="30" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Grid.Row="1">
-                    <TextBox materialDesign:HintAssist.Hint="First Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Width="170" Margin="0 0 20 0"/>
-                    <TextBox materialDesign:HintAssist.Hint="Last Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Width="170"/>
+                    <TextBox Text="{Binding Account_Fname}" materialDesign:HintAssist.Hint="First Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Width="170" Margin="0 0 20 0"/>
+                    <TextBox Text="{Binding Account_Lname}" materialDesign:HintAssist.Hint="Last Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Width="170"/>
                 </StackPanel>
-                <TextBox materialDesign:HintAssist.Hint="Email"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Grid.Row="2"/>
+                <TextBox materialDesign:HintAssist.Hint="Email" Text="{Binding Account_Email}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Grid.Row="2"/>
                 <v:PasswordBoxCustom materialDesign:HintAssist.Hint="Password" Margin="5" Background="{x:Null}" Validation.ErrorTemplate="{StaticResource errorTemplate}" 
                                      Grid.Row="3" x:Name="ps">
                     <v:PasswordBoxCustom.Password>
-                        <Binding Path="Password" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="Account_Password" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <rule:PasswordRule/>
                             </Binding.ValidationRules>
@@ -59,7 +60,9 @@
                             <TextBlock Text="PREV" Foreground="White" FontSize="25"/>
                         </StackPanel>
                     </Button>
-                    <Button HorizontalAlignment="Center" Background="Red" Width="150" Height="40" Click="Next_Click">
+                    <Button HorizontalAlignment="Center" Background="Red" Width="150" Height="40" Click="Next_Click"
+                            Command="{Binding CreatAccount}"
+                            CommandParameter="{Binding ElementName=signUp2Window}">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock Text="NEXT" Foreground="White" FontSize="25"/>
                             <materialDesign:PackIcon Kind="ChevronRight" Foreground="White" VerticalAlignment="Center" Width="30" Height="30"/>

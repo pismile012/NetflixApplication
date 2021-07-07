@@ -62,7 +62,6 @@
                             Foreground="White" FontWeight="Bold" BorderThickness="0" Height="50"
                             Command="{Binding SignUpCommand}"
                             IsDefault="True" 
-                            CommandTarget="{Binding ElementName=txtEmail}"
                             CommandParameter="{Binding ElementName=signUpView}"/>
                 </StackPanel>
             </StackPanel>
