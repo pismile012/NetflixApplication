@@ -17,7 +17,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="560" Width="1260"      
       Title="SignUp1View"
-      Name="signUpWindow">
+      Name="signUpView">
     <Page.DataContext>
         <vm:SignUp1ViewModel/>
     </Page.DataContext>    
@@ -48,10 +48,10 @@
                 <TextBlock Text="Watch anywhere. Cancel anytime."/>
                 <TextBlock Text="Ready to watch? Enter your email to create or restart your membership."/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox materialDesign:HintAssist.Hint="Email Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
+                    <TextBox  x:Name="txtEmail" materialDesign:HintAssist.Hint="Email Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
                                  VerticalAlignment="Center" Width="600" >
                         <TextBox.Text>
-                            <Binding Path="Email" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="Account_Email"  ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <rule:EmailRule/>
                                 </Binding.ValidationRules>
@@ -61,8 +61,9 @@
                     <Button Width="200" Background="Red" Content="Get Started" FontSize="28"
                             Foreground="White" FontWeight="Bold" BorderThickness="0" Height="50"
                             Command="{Binding SignUpCommand}"
-                            IsDefault="True"
-                            CommandParameter="{Binding ElementName=signUpWindow}"/>
+                            IsDefault="True" 
+                            CommandTarget="{Binding ElementName=txtEmail}"
+                            CommandParameter="{Binding ElementName=signUpView}"/>
                 </StackPanel>
             </StackPanel>
             <Border BorderBrush="DarkGray" BorderThickness="0 3 0 0" Grid.Row="1">
@@ -115,9 +116,12 @@
             </Border>
             <StackPanel Orientation="Horizontal" Grid.Row="4">
                 <TextBox materialDesign:HintAssist.Hint="Email Address"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
-                                 VerticalAlignment="Center" Width="600"/>
+                                 VerticalAlignment="Center" Width="600" Text="{Binding Email}"/>
                 <Button Width="200" Background="Red" Content="Get Started" FontSize="28"
-                            Foreground="White" FontWeight="Bold" BorderThickness="0" Height="50"/>
+                            Foreground="White" FontWeight="Bold" BorderThickness="0" Height="50"
+                            Command="{Binding SignUpCommand}"
+                            IsDefault="True"
+                            CommandParameter="{Binding ElementName=signUpView}"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>
