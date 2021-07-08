@@ -14,117 +14,30 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        WindowStartupLocation="CenterScreen"
-        Title="VideoPlay" Height="680" Width="1280">
-    <Window.CommandBindings>
+        Title="VideoPlay" Height="450" Width="800" Drop="Window_Drop" AllowDrop="True">
+    <Grid HorizontalAlignment="Right" Width="794" Name="layoutRoot">
+        <MediaElement MouseLeftButtonUp="MediaElement_MouseLeftButtonUp" Name="mediaElement" MediaOpened="MediaElement_MediaOpened" Margin="0,0,0,-35.6"/>
+        <StackPanel VerticalAlignment="Bottom">
+            <Slider Name="slider_seek"  HorizontalAlignment="Left" Margin="10,321,-0.4,0" VerticalAlignment="Top" RenderTransformOrigin="3.197,0.699" Height="27" Width="784" ValueChanged="Slider_seek_ValueChanged"/>
 
-    </Window.CommandBindings>
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <!--Control Bar-->
-            <materialDesign:Card>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Height="70" Background="{x:Null}" BorderThickness="0" Command="{Binding HomeViewCommand}">
-                        <Image Source="..\File\Logo.png" Height="70"/>
-                    </Button>
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="10 0">
-                        <Button Content="HOME" Style="{StaticResource MaterialDesignRaisedButton}" 
-                            Background="{x:Null}" BorderThickness="0" Width="120" Height="auto"
-                            Foreground="White" FontWeight="Bold"
-                            Command="{Binding HomeViewCommand}"/>
-                        <Button Content="MY LIST" Style="{StaticResource MaterialDesignRaisedButton}" 
-                            Background="{x:Null}" BorderThickness="0" Width="120" Height="auto"
-                            Foreground="White" FontWeight="Bold"
-                            Command="{Binding MyListViewCommand}"/>
-                        <Button Content="CONTACT" Style="{StaticResource MaterialDesignRaisedButton}" 
-                            Background="{x:Null}" BorderThickness="0" Width="120" Height="auto"
-                            Foreground="White" FontWeight="Bold"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Column="2">
-                        <Border BorderBrush="Gray" BorderThickness="2" Height="40" CornerRadius="5">
-                            <TextBox Margin="10 0 0 0" materialDesign:HintAssist.Hint="Search moive"
-                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                             BorderThickness="0" Width="250" VerticalAlignment="Center" />
-                        </Border>
-                        <Button Style="{DynamicResource MaterialDesignToolButton}" VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="Search" Height="25" Width="25"/>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
-                        <TextBlock x:Name="tbUsername" Text="User Name" VerticalAlignment="Center" Margin="0 0 10 0"/>
-                        <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" Margin="10">
-                            <ListBox Width="150">
-                                <ListBoxItem Content="Profile" />
-                                <ListBoxItem Content="Setting" />
-                                <ListBoxItem>
-                                    <ListBoxItem.Content>
-                                        <WrapPanel>
-                                            <materialDesign:PackIcon Kind="Logout" VerticalAlignment="Center" Margin="0 0 5 0"/>
-                                            <TextBlock Text="Log out"/>
-                                        </WrapPanel>
-                                    </ListBoxItem.Content>
-                                </ListBoxItem>
-                            </ListBox>
-                        </materialDesign:PopupBox>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:Card>
-            <Grid Grid.Row="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <ToolBar>
-                    <Separator />
-                    <Button Command="MediaCommands.Play" Margin="0,0,0,6" Width="72">
-                        <Image Source="play.png" Height="40" Width="42" Stretch="UniformToFill" />
-                    </Button>
-                    <Button Command="MediaCommands.Pause">
-                        <Image Source="pause.png" Height="40" Width="42" />
-                    </Button>
-                </ToolBar>
-
-                <MediaElement Name="mePlayer" Grid.Row="1" LoadedBehavior="Manual" Stretch="None" />
-
-                <StatusBar Grid.Row="2">
-                    <StatusBar.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                            </Grid>
-                        </ItemsPanelTemplate>
-                    </StatusBar.ItemsPanel>
-                    <StatusBarItem>
-                        <TextBlock Name="lblProgressStatus">00:00:00</TextBlock>
-                    </StatusBarItem>
-                    <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
-                        <Slider Name="sliProgress"/>
-                    </StatusBarItem>
-                    <StatusBarItem Grid.Column="2">
-                        <ProgressBar Name="pbVolume" Width="50" Height="12" Maximum="1" Value="{Binding ElementName=mePlayer, Path=Volume}" />
-                    </StatusBarItem>
-                </StatusBar>
-            </Grid>
-        </Grid>
-        
+            <StackPanel Orientation="Horizontal">
+                <Button Name="btnPlay" Background="White" BorderBrush="White" Width="75" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Play" />
+                </Button>
+                <Button Name="btnPause" Background="White" BorderBrush="White" Width="75" Click="BtnPause_Click">
+                    <materialDesign:PackIcon Kind="Pause"/>
+                </Button>
+                <Button Name="btnStop" Background="White" BorderBrush="White" HorizontalAlignment="Left" Width="75" Click="BtnStop_Click">
+                    <materialDesign:PackIcon Kind="Stop"/>
+                </Button>
+                <WrapPanel VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="VolumeHigh" VerticalAlignment="Center" Width="30" Height="30"/>
+                    <Slider Name="slider_vol"  Height="32" Width="103" AllowDrop="True" Maximum="1" 
+                            LargeChange="0.1" SmallChange="0.01" Value="1" 
+                            ValueChanged="Slider_vol_ValueChanged"
+                            VerticalAlignment="Center" Margin="0 7 0 0"/>
+                </WrapPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
