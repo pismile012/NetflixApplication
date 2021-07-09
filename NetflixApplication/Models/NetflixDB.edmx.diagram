@@ -10,9 +10,9 @@
         <EntityTypeShape EntityType="DB_Digam_NetfixModel.Category" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DB_Digam_NetfixModel.Director" Width="1.5" PointX="0.75" PointY="4" />
         <EntityTypeShape EntityType="DB_Digam_NetfixModel.Movie" Width="1.5" PointX="3" PointY="2.875" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.MyList" Width="1.5" PointX="5.25" PointY="3.75" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Rating" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Rental" Width="1.5" PointX="5.25" PointY="8.25" />
+        <EntityTypeShape EntityType="DB_Digam_NetfixModel.MyList" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Rating" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Rental" Width="1.5" PointX="5.25" PointY="8.125" />
         <EntityTypeShape EntityType="DB_Digam_NetfixModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.125" />
         <AssociationConnector Association="DB_Digam_NetfixModel.FK_MyList_Customer" />
         <AssociationConnector Association="DB_Digam_NetfixModel.FK_Rating_Customer" />
