@@ -54,12 +54,12 @@
           <Property Name="Movie_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Category_ID" Type="int" Nullable="false" />
           <Property Name="Movie_Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="Movie_Lenght" Type="float" />
           <Property Name="Movie_Year" Type="int" />
           <Property Name="Movie_Describe" Type="nvarchar" MaxLength="500" />
-          <Property Name="Movie_Posting" Type="image" />
           <Property Name="Movie_Trailer" Type="nvarchar" MaxLength="50" />
-          <Property Name="Movie_View" Type="varbinary" MaxLength="1" />
+          <Property Name="Movie_Image" Type="nvarchar" MaxLength="50" />
+          <Property Name="Movie_View" Type="int" />
+          <Property Name="Movie_Lenght" Type="int" />
         </EntityType>
         <EntityType Name="MovieActor">
           <Key>
@@ -91,10 +91,10 @@
             <PropertyRef Name="Rental_ID" />
           </Key>
           <Property Name="Rental_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Rental_Date" Type="int" />
-          <Property Name="Return_Date" Type="int" />
           <Property Name="Customer_ID" Type="int" Nullable="false" />
           <Property Name="Account_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rental_Day" Type="date" />
+          <Property Name="Rental_Return" Type="date" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -445,12 +445,12 @@
           <Property Name="Movie_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Category_ID" Type="Int32" Nullable="false" />
           <Property Name="Movie_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Movie_Lenght" Type="Double" />
           <Property Name="Movie_Year" Type="Int32" />
           <Property Name="Movie_Describe" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Movie_Posting" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Movie_Trailer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Movie_View" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="Movie_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Movie_View" Type="Int32" />
+          <Property Name="Movie_Lenght" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="DB_Digam_NetfixModel.FK_Movie_Category" FromRole="Movie" ToRole="Category" />
           <NavigationProperty Name="MyLists" Relationship="DB_Digam_NetfixModel.FK_MyList_Movie" FromRole="Movie" ToRole="MyList" />
           <NavigationProperty Name="Ratings" Relationship="DB_Digam_NetfixModel.FK_Rating_Movie" FromRole="Movie" ToRole="Rating" />
@@ -483,10 +483,10 @@
             <PropertyRef Name="Rental_ID" />
           </Key>
           <Property Name="Rental_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Rental_Date" Type="Int32" />
-          <Property Name="Return_Date" Type="Int32" />
           <Property Name="Customer_ID" Type="Int32" Nullable="false" />
           <Property Name="Account_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rental_Day" Type="DateTime" Precision="0" />
+          <Property Name="Rental_Return" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Account" Relationship="DB_Digam_NetfixModel.FK_Rental_Customer" FromRole="Rental" ToRole="Account" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -650,12 +650,12 @@
           <EntitySetMapping Name="Movies">
             <EntityTypeMapping TypeName="DB_Digam_NetfixModel.Movie">
               <MappingFragment StoreEntitySet="Movie">
+                <ScalarProperty Name="Movie_Lenght" ColumnName="Movie_Lenght" />
                 <ScalarProperty Name="Movie_View" ColumnName="Movie_View" />
+                <ScalarProperty Name="Movie_Image" ColumnName="Movie_Image" />
                 <ScalarProperty Name="Movie_Trailer" ColumnName="Movie_Trailer" />
-                <ScalarProperty Name="Movie_Posting" ColumnName="Movie_Posting" />
                 <ScalarProperty Name="Movie_Describe" ColumnName="Movie_Describe" />
                 <ScalarProperty Name="Movie_Year" ColumnName="Movie_Year" />
-                <ScalarProperty Name="Movie_Lenght" ColumnName="Movie_Lenght" />
                 <ScalarProperty Name="Movie_Name" ColumnName="Movie_Name" />
                 <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
                 <ScalarProperty Name="Movie_ID" ColumnName="Movie_ID" />
@@ -683,10 +683,10 @@
           <EntitySetMapping Name="Rentals">
             <EntityTypeMapping TypeName="DB_Digam_NetfixModel.Rental">
               <MappingFragment StoreEntitySet="Rental">
+                <ScalarProperty Name="Rental_Return" ColumnName="Rental_Return" />
+                <ScalarProperty Name="Rental_Day" ColumnName="Rental_Day" />
                 <ScalarProperty Name="Account_Email" ColumnName="Account_Email" />
                 <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
-                <ScalarProperty Name="Return_Date" ColumnName="Return_Date" />
-                <ScalarProperty Name="Rental_Date" ColumnName="Rental_Date" />
                 <ScalarProperty Name="Rental_ID" ColumnName="Rental_ID" />
               </MappingFragment>
             </EntityTypeMapping>

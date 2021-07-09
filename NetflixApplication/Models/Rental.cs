@@ -15,10 +15,10 @@ namespace NetflixApplication.Models
     public partial class Rental
     {
         public int Rental_ID { get; set; }
-        public Nullable<int> Rental_Date { get; set; }
-        public Nullable<int> Return_Date { get; set; }
         public int Customer_ID { get; set; }
         public string Account_Email { get; set; }
+        public Nullable<System.DateTime> Rental_Day { get; set; }
+        public Nullable<System.DateTime> Rental_Return { get; set; }
     
         public virtual Account Account { get; set; }
     }

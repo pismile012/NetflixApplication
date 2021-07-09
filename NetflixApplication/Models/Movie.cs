@@ -26,12 +26,12 @@ namespace NetflixApplication.Models
         public int Movie_ID { get; set; }
         public int Category_ID { get; set; }
         public string Movie_Name { get; set; }
-        public Nullable<double> Movie_Lenght { get; set; }
         public Nullable<int> Movie_Year { get; set; }
         public string Movie_Describe { get; set; }
-        public byte[] Movie_Posting { get; set; }
         public string Movie_Trailer { get; set; }
-        public byte[] Movie_View { get; set; }
+        public string Movie_Image { get; set; }
+        public Nullable<int> Movie_View { get; set; }
+        public Nullable<int> Movie_Lenght { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
