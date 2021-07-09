@@ -18,6 +18,7 @@ namespace NetflixApplication.Models
         public Nullable<int> Rental_Date { get; set; }
         public Nullable<int> Return_Date { get; set; }
         public int Customer_ID { get; set; }
+        public string Account_Email { get; set; }
     
         public virtual Account Account { get; set; }
     }

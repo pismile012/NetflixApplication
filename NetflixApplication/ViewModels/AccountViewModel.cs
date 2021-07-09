@@ -65,10 +65,29 @@ namespace NetflixApplication.ViewModels
             var accCount = DataProvider.Ins.DB.Accounts.Where(x => x.Account_Email == Account_Email && x.Account_Password == passEncode).Count();
             if (accCount > 0)
             {
-                IsLogin = true;
-                MessageBox.Show("DN thành công");
-                p.Close();
-                
+                var checktype = DataProvider.Ins.DB.Accounts.Where(x => x.Account_Type == "Admin" && x.Account_Email==Account_Email).Count();
+                if (checktype > 0)
+                {
+                    IsLogin = true;
+                    MessageBox.Show("Ban dang dang nhap voi quyen admin!");
+                }
+                else 
+                {
+                    IsLogin = true;
+                    var checkstatus = DataProvider.Ins.DB.Rentals.Where(x => x.Account_Email == Account_Email).Count();
+                    if (checkstatus > 0)
+                    {
+                        MessageBox.Show("DN thành công");
+                        p.Close();
+                    }
+                    else
+                    {
+                        IsLogin = false;
+                        MessageBox.Show("Tai Khoan chua dang ki goi, Vui long dang ki goi su dung");
+                    }
+
+                }
+
             }
             else
             {
