@@ -39,6 +39,7 @@
             </StackPanel.Resources>
             <TextBlock FontSize="28">STEP <Bold>1</Bold> of <Bold>2</Bold></TextBlock>
             <TextBlock Text="Set up your credit or debit card" FontSize="40" Margin="0 0 0 30"/>
+            <TextBox Text="{Binding Account_Email}" materialDesign:HintAssist.Hint="Retype your email"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center"/>
             <TextBox materialDesign:HintAssist.Hint="Card Number"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center"/>
             <DatePicker  materialDesign:HintAssist.Hint="Expiration date (MM/YY)"
                          Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
@@ -98,7 +99,7 @@
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Background="Red" FontSize="30" FontWeight="Bold"
                         Command="{Binding RentalCommand}"
-                        CommandParameter="rentalWindow"/>
+                        CommandParameter="{Binding ElementName=rentalWindow}"/>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

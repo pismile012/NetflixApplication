@@ -33,43 +33,52 @@ namespace NetflixApplication.ViewModels
         {
             Success = false;
             Account_Email = "";
-            RentalCommand = new RelayCommand<RadioButton>((p) => { return true; }, (p) => { Ischeck(p); });
+            RentalCommand = new RelayCommand<Page>((p) => { return true; }, (p) => { Ischeck(p); });
         }
-        void Ischeck(RadioButton p)
+        int radiobtCheck(RadioButton rd)
         {
-            if (p == null)
-                return;
-            var rentalaccount = new Rental { Account_Email = Account_Email, Rental_Day = DateTime.Today, Rental_Return = DateTime.Now.AddMonths(getvalue) };
-            if (p.IsChecked == Value1)
+            if (rd.IsChecked == Value1)
             {
                 getvalue = 1;
-                using (var db = new DB_Digam_NetfixEntities())
-                {
-                    var add = db.Set<Rental>();
-                    add.Add(rentalaccount);
-                    db.SaveChanges();
-                }
             }
-            if (p.IsChecked == Value2)
+            if (rd.IsChecked == Value2)
             {
                 getvalue = 6;
-                using (var db = new DB_Digam_NetfixEntities())
-                {
-                    var add = db.Set<Rental>();
-                    add.Add(rentalaccount);
-                    db.SaveChanges();
-                }
             }
-            if (p.IsChecked == Value3)
+            if (rd.IsChecked == Value3)
             {
                 getvalue = 12;
+            }
+            return getvalue;
+        }
+        void Ischeck(Page p)
+        {
+            RadioButton rd = new RadioButton();
+            var selectid = DataProvider.Ins.DB.Accounts.Where(x => x.Account_Email == Account_Email).Select(x => x.Account_ID).FirstOrDefault();
+            if (p == null)
+                return;
+            if (radiobtCheck(rd) == 0)
+            {
+                MessageBox.Show("Vui long chon goi");
+            }
+            else
+            {
+                var rentalaccount = new Rental
+                {
+                    Account_Email = Account_Email,
+                    Rental_Day = DateTime.Today,
+                    Rental_Return = DateTime.Today.AddMonths(getvalue),
+                    Customer_ID = selectid
+                };
                 using (var db = new DB_Digam_NetfixEntities())
                 {
                     var add = db.Set<Rental>();
                     add.Add(rentalaccount);
                     db.SaveChanges();
                 }
-            }
+                MessageBox.Show("Dang ki goi thanh cong");
+            }  
         }
+        
     }
 }
