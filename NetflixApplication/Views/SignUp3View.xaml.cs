@@ -27,7 +27,7 @@ namespace NetflixApplication.Views
 
         private void Pre_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new SignUp2View());
+            this.NavigationService.Navigate(new SignUp1View());
         }
     }
 }

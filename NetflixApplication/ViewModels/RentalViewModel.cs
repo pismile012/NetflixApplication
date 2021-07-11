@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using NetflixApplication.Models;
 using NetflixApplication.Views;
+using System.Windows.Navigation;
 
 
 namespace NetflixApplication.ViewModels
@@ -77,6 +78,7 @@ namespace NetflixApplication.ViewModels
                     db.SaveChanges();
                 }
                 MessageBox.Show("Dang ki goi thanh cong");
+                p.NavigationService.Navigate(new SignUp1View());
             }  
         }
         

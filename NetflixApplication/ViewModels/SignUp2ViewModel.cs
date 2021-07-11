@@ -93,7 +93,8 @@ namespace NetflixApplication.ViewModels
                         account.Add(acc);
                         db.SaveChanges();
                 }
-                p.NavigationService.Navigate(new SignUp3View());
+                MessageBox.Show("Tao tai khoan thanh cong");
+                p.NavigationService.Navigate(new SignInView());
             }
             else
             {

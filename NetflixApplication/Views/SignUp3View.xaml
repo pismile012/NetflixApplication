@@ -92,7 +92,7 @@
                 <Button Background="Red" Width="200" Height="50" Click="Pre_Click" Margin="0 0 120 0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <materialDesign:PackIcon Kind="ChevronLeft" Foreground="White" VerticalAlignment="Center" Width="30" Height="30"/>
-                        <TextBlock Text="PREV" Foreground="White" FontSize="30"/>
+                        <TextBlock Text="Login" Foreground="White" FontSize="30"/>
                     </StackPanel>
                 </Button>
                 <Button Content="FINISH" Margin="30" Width="200" Height="50"

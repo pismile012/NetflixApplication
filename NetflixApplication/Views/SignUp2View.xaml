@@ -64,7 +64,7 @@
                             Command="{Binding CreatAccount}"
                             CommandParameter="{Binding ElementName=signUp2Window}">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock Text="NEXT" Foreground="White" FontSize="25"/>
+                            <TextBlock Text="Registration" Foreground="White" FontSize="25"/>
                             <materialDesign:PackIcon Kind="ChevronRight" Foreground="White" VerticalAlignment="Center" Width="30" Height="30"/>
                         </StackPanel>
                     </Button>
