@@ -141,6 +141,7 @@
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MyListViewModel.cs" />
+    <Compile Include="ViewModels\RentalViewModel.cs" />
     <Compile Include="ViewModels\SignUp1ViewModel.cs" />
     <Compile Include="ViewModels\SignUp2ViewModel.cs" />
     <Compile Include="ViewModels\SignUpViewModel.cs" />

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:NetflixApplication.Views"
+      xmlns:vm="clr-namespace:NetflixApplication.ViewModels"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -14,7 +15,11 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="530" Width="1280"
-        Title="SignUp3View">
+        Title="SignUp3View"
+      Name="rentalWindow">
+    <Page.DataContext>
+        <vm:RentalViewModel/>
+    </Page.DataContext>
     <ScrollViewer VerticalScrollBarVisibility="Hidden">
         <StackPanel  Margin="60" Width="550">
             <StackPanel.Resources>
@@ -40,7 +45,7 @@
             <TextBox materialDesign:HintAssist.Hint="Security code (CVV)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center"/>
             <TextBlock FontSize="28" Margin="0 60 0 0">STEP <Bold>2</Bold> of <Bold>2</Bold></TextBlock>
             <TextBlock Text="Choose a plan. You can always change or cancel." TextWrapping="Wrap" FontSize="40" FontWeight="Bold" Margin="0 0 0 40"/>
-            <RadioButton IsChecked="True">
+            <RadioButton IsChecked="{Binding Value1}">
                 <RadioButton.Content>
                     <Grid Margin="0 -8 0 0 " Width="530">
                         <Grid.ColumnDefinitions>
@@ -54,7 +59,7 @@
                     </Grid>
                 </RadioButton.Content>
             </RadioButton>
-            <RadioButton>
+            <RadioButton IsChecked="{Binding Value2}">
                 <RadioButton.Content>
                     <Grid Margin="0 -8 0 0 " Width="530">
                         <Grid.ColumnDefinitions>
@@ -68,7 +73,7 @@
                     </Grid>
                 </RadioButton.Content>
             </RadioButton>
-            <RadioButton>
+            <RadioButton IsChecked="{Binding Value3}">
                 <RadioButton.Content>
                     <Grid Margin="0 -8 0 0 " Width="530">
                         <Grid.ColumnDefinitions>
@@ -91,8 +96,10 @@
                 </Button>
                 <Button Content="FINISH" Margin="30" Width="200" Height="50"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                    Background="Red" FontSize="30" FontWeight="Bold"/>
-            </StackPanel>            
+                    Background="Red" FontSize="30" FontWeight="Bold"
+                        Command="{Binding RentalCommand}"
+                        CommandParameter="rentalWindow"/>
+            </StackPanel>
         </StackPanel>
-    </ScrollViewer>    
+    </ScrollViewer>
 </Page>
