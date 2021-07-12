@@ -14,30 +14,61 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="VideoPlay" Height="450" Width="800" Drop="Window_Drop" AllowDrop="True">
-    <Grid HorizontalAlignment="Right" Width="794" Name="layoutRoot">
-        <MediaElement MouseLeftButtonUp="MediaElement_MouseLeftButtonUp" Name="mediaElement" MediaOpened="MediaElement_MediaOpened" Margin="0,0,0,-35.6"/>
-        <StackPanel VerticalAlignment="Bottom">
-            <Slider Name="slider_seek"  HorizontalAlignment="Left" Margin="10,321,-0.4,0" VerticalAlignment="Top" RenderTransformOrigin="3.197,0.699" Height="27" Width="784" ValueChanged="Slider_seek_ValueChanged"/>
+        WindowStartupLocation="CenterScreen"
+        Title="VideoPlay" Height="680" Width="1280" >
 
-            <StackPanel Orientation="Horizontal">
-                <Button Name="btnPlay" Background="White" BorderBrush="White" Width="75" Click="Button_Click">
-                    <materialDesign:PackIcon Kind="Play" />
-                </Button>
-                <Button Name="btnPause" Background="White" BorderBrush="White" Width="75" Click="BtnPause_Click">
-                    <materialDesign:PackIcon Kind="Pause"/>
-                </Button>
-                <Button Name="btnStop" Background="White" BorderBrush="White" HorizontalAlignment="Left" Width="75" Click="BtnStop_Click">
-                    <materialDesign:PackIcon Kind="Stop"/>
-                </Button>
-                <WrapPanel VerticalAlignment="Center">
+    <Grid DataContext="{Binding Movies}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <MediaElement Source="Movie_Trailer" Name="mediaElement" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+        
+        <StackPanel VerticalAlignment="Bottom" Grid.Row="1">                        
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Button Name="btnPlay" Background="{x:Null}" BorderThickness="0" Width="75" Click="Button_Click" Visibility="Hidden">
+                        <materialDesign:PackIcon Kind="Play" Foreground="White" Width="30" Height="30" VerticalAlignment="Center"/>
+                    </Button>
+                    <Button Name="btnPause" Background="{x:Null}" BorderThickness="0" Width="75" Click="BtnPause_Click">
+                        <materialDesign:PackIcon Kind="Pause" Foreground="White" Width="30" Height="30" VerticalAlignment="Center"/>
+                    </Button>                    
+                </Grid>
+                <Grid VerticalAlignment="Center" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions> 
                     <materialDesign:PackIcon Kind="VolumeHigh" VerticalAlignment="Center" Width="30" Height="30"/>
-                    <Slider Name="slider_vol"  Height="32" Width="103" AllowDrop="True" Maximum="1" 
-                            LargeChange="0.1" SmallChange="0.01" Value="1" 
-                            ValueChanged="Slider_vol_ValueChanged"
-                            VerticalAlignment="Center" Margin="0 7 0 0"/>
-                </WrapPanel>
-            </StackPanel>
+                    <Slider Name="slider_vol" Width="100" AllowDrop="True" Maximum="1" VerticalAlignment="Center"
+                            LargeChange="0.1" SmallChange="0.01" Value="1" Foreground="DarkGray"
+                            ValueChanged="Slider_vol_ValueChanged"/>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="NaN : NaN" x:Name="txtRealTime" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Slider Name="slider_seek"  HorizontalAlignment="Left" Foreground="DarkGray"
+                                ValueChanged="Slider_seek_ValueChanged" Grid.Column="1"/>
+                        <TextBlock Text="NaN : NaN" x:Name="txtMaxTime" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2"/>
+                    </Grid>                    
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <Button x:Name="FullScreen" Background="{x:Null}" BorderThickness="0" Width="75" Click="FullScreen_Click">
+                        <materialDesign:PackIcon Kind="Fullscreen" Foreground="White" Width="30" Height="30" VerticalAlignment="Center"/>
+                    </Button>
+                    <Button x:Name="ExitFullScreen" Background="{x:Null}" BorderThickness="0" Width="75" Visibility="Hidden" Click="ExitFullScreen_Click">
+                        <materialDesign:PackIcon Kind="FullscreenExit" Foreground="White" Width="30" Height="30" VerticalAlignment="Center"/>
+                    </Button>
+                </Grid>                
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

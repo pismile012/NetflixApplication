@@ -20,7 +20,7 @@
       Name="signUpView">
     <Page.DataContext>
         <vm:SignUp1ViewModel/>
-    </Page.DataContext>    
+    </Page.DataContext>   
 
     <ScrollViewer VerticalScrollBarVisibility="Hidden">
         <Grid>
@@ -35,35 +35,41 @@
                 <RowDefinition Height="530"/>
                 <RowDefinition Height="530"/>
                 <RowDefinition Height="530"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
-            <StackPanel Width="800"  Grid.Row="0">
-                <StackPanel.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                        <Setter Property="Margin" Value="20"/>
-                    </Style>
-                </StackPanel.Resources>
-                <TextBlock Text="Unlimited movies, TV shows, and more." FontSize="40"  FontWeight="Bold"/>
-                <TextBlock Text="Watch anywhere. Cancel anytime."/>
-                <TextBlock Text="Ready to watch? Enter your email to create or restart your membership."/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox  x:Name="txtEmail" materialDesign:HintAssist.Hint="Email Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
-                                 VerticalAlignment="Center" Width="600" >
-                        <TextBox.Text>
-                            <Binding Path="Account_Email"  ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <rule:EmailRule/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </TextBox.Text>
-                    </TextBox>
-                    <Button Width="200" Background="Red" Content="Get Started" FontSize="28"
+            <StackPanel Grid.Row="0" Width="1260" Height="530">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="/NetflixApplication;component/File/Netflix-Background.jpg" Opacity="0.5"/>
+                </StackPanel.Background>
+                <StackPanel Margin="0 150 0 0">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="20"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock Text="Unlimited movies, TV shows, and more." FontSize="40"  FontWeight="Bold"/>
+                    <TextBlock Text="Watch anywhere. Cancel anytime." FontWeight="Bold"/>
+                    <TextBlock FontWeight="Bold" Text="Ready to watch? Enter your email to create or restart your membership."/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox  x:Name="txtEmail" materialDesign:HintAssist.Hint="Email Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
+                                 VerticalAlignment="Center" Width="600" Validation.ErrorTemplate="{StaticResource errorTemplate}">
+                            <TextBox.Text>
+                                <Binding Path="Account_Email"  ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <rule:EmailRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Button Width="200" Background="Red" Content="Get Started" FontSize="28"
                             Foreground="White" FontWeight="Bold" BorderThickness="0" Height="50"
                             Command="{Binding SignUpCommand}"
                             IsDefault="True" 
                             CommandParameter="{Binding ElementName=signUpView}"/>
-                </StackPanel>
+                    </StackPanel>
+                </StackPanel>                
             </StackPanel>
             <Border BorderBrush="DarkGray" BorderThickness="0 3 0 0" Grid.Row="1">
                 <Grid>
@@ -113,7 +119,48 @@
                     </Grid>
                 </Grid>
             </Border>
-            <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <StackPanel Grid.Row="4" Width="800">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="30 10"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="Frequently Asked Questions" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+                <Expander Header="What is Netflix?">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" Text="Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.t"/>
+                        <TextBlock TextWrapping="Wrap" Text="You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!"/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="How much does Netflix cost?">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" Text="Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from 70,000 ₫ to 260,000 ₫ a month. No extra costs, no contracts."/>                        
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Where can I watch?">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" Text="Watch anywhere, anytime, on an unlimited number of devices. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles."/>
+                        <TextBlock TextWrapping="Wrap" Text="You can also download your favorite shows with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere."/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="How do I cancel?">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" Text="Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime."/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="What can I watch on Netflix?">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" Text="Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want."/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Is Netflix good for kid?">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" Text="The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space."/>
+                        <TextBlock TextWrapping="Wrap" Text="Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don't want kids to see."/>
+                    </StackPanel>
+                </Expander>                                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="5">
                 <TextBox materialDesign:HintAssist.Hint="Email Address"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
                                  VerticalAlignment="Center" Width="600" Text="{Binding Email}"/>
                 <Button Width="200" Background="Red" Content="Get Started" FontSize="28"

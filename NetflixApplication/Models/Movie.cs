@@ -22,14 +22,19 @@ namespace NetflixApplication.Models
             this.Directors = new HashSet<Director>();
             this.Actors = new HashSet<Actor>();
         }
-    
+        private string img = @"D:\DA - Video\Poster\";
+        private string movie = @"D:\DA - Video\Movie\";
+        private string _P;
+        private string _T;
+        private string _M;
+
         public int Movie_ID { get; set; }
         public int Category_ID { get; set; }
         public string Movie_Name { get; set; }
         public Nullable<int> Movie_Year { get; set; }
         public string Movie_Describe { get; set; }
-        public string Movie_Trailer { get; set; }
-        public string Movie_Image { get; set; }
+        public string Movie_Trailer { get { return _T; } set { _T = movie + value; } }
+        public string Movie_Image { get { return _P; } set { _P = img + value; } }
         public Nullable<int> Movie_View { get; set; }
         public Nullable<int> Movie_Lenght { get; set; }
     

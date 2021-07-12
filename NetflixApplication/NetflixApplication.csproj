@@ -91,6 +91,10 @@
     </Compile>
     <Compile Include="Models\ConnectSQL.cs" />
     <Compile Include="Models\DataProvider.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\Director.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
@@ -119,19 +123,6 @@
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rental.cs">
-      <DependentUpon>NetflixDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>NetflixDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>NetflixDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>NetflixDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Validation_Rule\EmailRule.cs" />
@@ -263,19 +254,22 @@
     <Resource Include="File\tab.png" />
     <Resource Include="File\Phone.jpg" />
     <Resource Include="File\play.png" />
+    <Resource Include="File\Netflix-Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\NetflixDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NetflixDB.Context.cs</LastGenOutput>
       <DependentUpon>NetflixDB.edmx</DependentUpon>
+      <LastGenOutput>NetflixDB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\NetflixDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NetflixDB.edmx</DependentUpon>
       <LastGenOutput>NetflixDB.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />

@@ -23,11 +23,11 @@ namespace NetflixApplication.Models
             }
         }
 
-        public DB_Digam_NetfixEntities DB { get; set; }
+        public DB_Digam_NetflixEntities DB { get; set; }
 
         private DataProvider()
         {
-            DB = new DB_Digam_NetfixEntities();
+            DB = new DB_Digam_NetflixEntities();
         }
     }
 }

@@ -71,7 +71,7 @@ namespace NetflixApplication.ViewModels
                     Rental_Return = DateTime.Today.AddMonths(getvalue),
                     Customer_ID = selectid
                 };
-                using (var db = new DB_Digam_NetfixEntities())
+                using (var db = new DB_Digam_NetflixEntities())
                 {
                     var add = db.Set<Rental>();
                     add.Add(rentalaccount);

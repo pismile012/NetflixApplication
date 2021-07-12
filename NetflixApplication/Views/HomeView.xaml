@@ -16,28 +16,76 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
       d:DesignHeight="610" d:DesignWidth="1280"
+      Name="HomeWindow"
       Title="HomeView">
-    <Page.DataContext>
-        <vm:HomeViewModel/>
-    </Page.DataContext>
+    
     <Page.Resources>
         <DataTemplate DataType="{x:Type m:Movie}">
-            <Grid Margin="2" Width="240" Height="135">
-                <Border BorderBrush="BlueViolet" CornerRadius="2" BorderThickness="1">
-                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Margin="2" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Border BorderBrush="DarkGray" CornerRadius="2" BorderThickness="1">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="240" Height="135">
                         <Grid x:Name="lPoster" Opacity="1">
-                            <Image Source="{Binding}" Stretch="Fill" 
+                            <Image Source="{Binding Movie_Image}" Stretch="Fill" 
                                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}, Path=Width}"
                                Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}, Path=Height}"/>
                             <Border  Opacity="0.8" VerticalAlignment="Bottom" Background="Gray">
-                                <TextBlock Text="{Binding}" Foreground="White" HorizontalAlignment="Center" />
-                            </Border>
+                                <TextBlock x:Name="ContentMovie" Text="{Binding Movie_Name}" Foreground="White" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                            </Border>                            
                         </Grid>
                         <Grid x:Name="lTrailer" Opacity="0">
-                            <MediaElement Name="video" Source="{Binding}" LoadedBehavior="Manual"/>
+                            <MediaElement Name="video" Source="{Binding Movie_Trailer}" LoadedBehavior="Manual"/>
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">                                
+                                <Button Style="{StaticResource MaterialDesignIconButton}" Name="PlayVideo" 
+                                    ToolTip="Play Movie" Click="PlayVideo_Click">
+                                    <StackPanel>
+                                        <TextBlock Name="txtIDMovie" Text="{Binding Movie_ID}" Visibility="Collapsed"/>
+                                        <materialDesign:PackIcon Kind="Play"/>
+                                    </StackPanel>                                    
+                                </Button>                                
+                            </StackPanel>                            
                         </Grid>
                     </Grid>
                 </Border>
+                <StackPanel x:Name="Details" Visibility="Collapsed" Grid.Row="1">
+                    <materialDesign:Card Margin="5 0" Width="240">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">                                    
+                                    <Setter Property="Grid.Column" Value="1"/>
+                                    <Setter Property="FontSize" Value="11"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="11"/>
+                                    <Setter Property="Foreground" Value="OrangeRed"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Label Content="Describe: "/>
+                            <Label Content="Lenght: " Grid.Row="1"/>
+                            <Label Content="Year: " Grid.Row="2"/>
+                            <Label Content="View: " Grid.Row="3"/>
+                            <TextBlock Text="{Binding Movie_Describe}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Movie_Lenght}" Grid.Row="1"/>
+                            <TextBlock Text="{Binding Movie_Year}" Grid.Row="2"/>
+                            <TextBlock Text="{Binding Movie_View}" Grid.Row="3"/>
+                        </Grid>
+                    </materialDesign:Card>                        
+                </StackPanel>
                 <Grid.LayoutTransform>
                     <ScaleTransform ScaleX="1" ScaleY="1"/>
                 </Grid.LayoutTransform>
@@ -48,7 +96,7 @@
                                 Path=IsMouseOver}" Value="True">
                                 <DataTrigger.EnterActions>
                                     <BeginStoryboard>
-                                        <Storyboard>
+                                        <Storyboard>                                            
                                             <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" BeginTime="0:0:0" To="1.3" Duration="0:0:0.5"/>
                                             <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" BeginTime="0:0:0" To="1.3" Duration="0:0:0.5"/>
                                             <DoubleAnimation Storyboard.Target="{x:Reference Name = lPoster}"
@@ -56,7 +104,7 @@
                                                              Duration="0:0:0.5"/>
                                             <DoubleAnimation Storyboard.Target="{x:Reference Name = lTrailer}"
                                                              Storyboard.TargetProperty="(Grid.Opacity)" BeginTime="0:0:0" To="1"
-                                                             Duration="0:0:0.5"/>
+                                                             Duration="0:0:0.5"/>                                            
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </DataTrigger.EnterActions>
@@ -80,7 +128,7 @@
         </DataTemplate>
     </Page.Resources>
     <Grid>
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="20 0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
@@ -91,8 +139,12 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="NEW MOVIE" FontSize="20" VerticalAlignment="Center" FontWeight="Bold" Margin="20 0"/>
+                <TextBlock Text="ACTION AND ADVENTURE" FontSize="20" VerticalAlignment="Center" FontWeight="Bold" Margin="20 0"/>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
                     <StackPanel.Resources>
                         <Style TargetType="ItemsControl">
@@ -109,7 +161,7 @@
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="32"/>
-                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="32"/>
                                             </Grid.ColumnDefinitions>
                                             <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}"
@@ -131,9 +183,9 @@
                             </Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <ItemsControl ItemsSource="{Binding DSMovie}"/>
+                    <ItemsControl ItemsSource="{Binding DS1}"/>
                 </StackPanel>
-                <TextBlock Text="NEW MOVIE" FontSize="20" VerticalAlignment="Center" 
+                <TextBlock Text="CARTOON" FontSize="20" VerticalAlignment="Center" 
                        FontWeight="Bold" Grid.Row="2" Margin="20 0"/>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3">
                     <StackPanel.Resources>
@@ -173,9 +225,9 @@
                             </Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <ItemsControl ItemsSource="{Binding DSMovie}"/>
+                    <ItemsControl ItemsSource="{Binding DS2}"/>
                 </StackPanel>
-                <TextBlock Text="NEW MOVIE" FontSize="20" VerticalAlignment="Center" FontWeight="Bold" Margin="20 0" Grid.Row="4"/>
+                <TextBlock Text="THRILLER" FontSize="20" VerticalAlignment="Center" FontWeight="Bold" Margin="20 0" Grid.Row="4"/>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5">
                     <StackPanel.Resources>
                         <Style TargetType="ItemsControl">
@@ -214,9 +266,9 @@
                             </Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <ItemsControl ItemsSource="{Binding DSMovie}"/>
+                    <ItemsControl ItemsSource="{Binding DS3}"/>
                 </StackPanel>
-                <TextBlock Text="NEW MOVIE" FontSize="20" VerticalAlignment="Center" 
+                <TextBlock Text="SCIENCE FICTION" FontSize="20" VerticalAlignment="Center" 
                        FontWeight="Bold" Grid.Row="6" Margin="20 0"/>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7">
                     <StackPanel.Resources>
@@ -256,7 +308,91 @@
                             </Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <ItemsControl ItemsSource="{Binding DSMovie}"/>
+                    <ItemsControl ItemsSource="{Binding DS4}"/>
+                </StackPanel>
+                <TextBlock Text="ROMANCE AND HISTORICAL" FontSize="20" VerticalAlignment="Center" 
+                       FontWeight="Bold" Grid.Row="8" Margin="20 0"/>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="9">
+                    <StackPanel.Resources>
+                        <Style TargetType="ItemsControl">
+                            <Setter Property="ItemsPanel">
+                                <Setter.Value>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ItemsControl">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="35"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="35"/>
+                                            </Grid.ColumnDefinitions>
+                                            <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}"
+                                                  CommandTarget="{Binding ElementName = listTrendingMovie}" ClickMode="Press"
+                                                  Style="{DynamicResource MaterialDesignToolButton}">
+                                                <materialDesign:PackIcon Kind="ChevronLeft" Width="30" Height="30"/>
+                                            </RepeatButton>
+                                            <ScrollViewer x:Name="listTrendingMovie" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Grid.Column="1">
+                                                <ItemsPresenter/>
+                                            </ScrollViewer>
+                                            <RepeatButton Command="{x:Static ScrollBar.PageRightCommand}" Grid.Column="2"
+                                                  CommandTarget="{Binding ElementName = listTrendingMovie}" ClickMode="Press"
+                                                  Style="{DynamicResource MaterialDesignToolButton}">
+                                                <materialDesign:PackIcon Kind="ChevronRight" Width="30" Height="30"/>
+                                            </RepeatButton>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <ItemsControl ItemsSource="{Binding DS5}"/>
+                </StackPanel>
+                <TextBlock Text="HORROR AND MYSTERY" FontSize="20" VerticalAlignment="Center" 
+                       FontWeight="Bold" Grid.Row="10" Margin="20 0"/>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="11">
+                    <StackPanel.Resources>
+                        <Style TargetType="ItemsControl">
+                            <Setter Property="ItemsPanel">
+                                <Setter.Value>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ItemsControl">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="35"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="35"/>
+                                            </Grid.ColumnDefinitions>
+                                            <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}"
+                                                  CommandTarget="{Binding ElementName = listTrendingMovie}" ClickMode="Press"
+                                                  Style="{DynamicResource MaterialDesignToolButton}">
+                                                <materialDesign:PackIcon Kind="ChevronLeft" Width="30" Height="30"/>
+                                            </RepeatButton>
+                                            <ScrollViewer x:Name="listTrendingMovie" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Grid.Column="1">
+                                                <ItemsPresenter/>
+                                            </ScrollViewer>
+                                            <RepeatButton Command="{x:Static ScrollBar.PageRightCommand}" Grid.Column="2"
+                                                  CommandTarget="{Binding ElementName = listTrendingMovie}" ClickMode="Press"
+                                                  Style="{DynamicResource MaterialDesignToolButton}">
+                                                <materialDesign:PackIcon Kind="ChevronRight" Width="30" Height="30"/>
+                                            </RepeatButton>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <ItemsControl ItemsSource="{Binding DS6}"/>
                 </StackPanel>
             </Grid>
         </ScrollViewer>

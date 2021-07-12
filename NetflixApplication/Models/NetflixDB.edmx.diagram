@@ -4,24 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6f242b3d3a19437fa61a7d02676630b2" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Account" Width="1.5" PointX="3" PointY="7.625" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Actor" Width="1.5" PointX="0.75" PointY="7.125" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Category" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Director" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Movie" Width="1.5" PointX="3" PointY="2.875" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.MyList" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Rating" Width="1.5" PointX="5.25" PointY="3.75" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.Rental" Width="1.5" PointX="5.25" PointY="8.125" />
-        <EntityTypeShape EntityType="DB_Digam_NetfixModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.125" />
-        <AssociationConnector Association="DB_Digam_NetfixModel.FK_MyList_Customer" />
-        <AssociationConnector Association="DB_Digam_NetfixModel.FK_Rating_Customer" />
-        <AssociationConnector Association="DB_Digam_NetfixModel.FK_Rental_Customer" />
-        <AssociationConnector Association="DB_Digam_NetfixModel.FK_Movie_Category" />
-        <AssociationConnector Association="DB_Digam_NetfixModel.FK_MyList_Movie" />
-        <AssociationConnector Association="DB_Digam_NetfixModel.FK_Rating_Movie" />
-        <AssociationConnector Association="DB_Digam_NetfixModel.DirectorMovie" />
-        <AssociationConnector Association="DB_Digam_NetfixModel.MovieActor" />
+      <Diagram DiagramId="b30cd2120e3448ba963f9fa979cf463c" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_Digam_NetflixModel.Account" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Digam_NetflixModel.Actor" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Digam_NetflixModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Digam_NetflixModel.Director" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Digam_NetflixModel.Movie" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Digam_NetflixModel.MyList" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Digam_NetflixModel.Rating" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Digam_NetflixModel.Rental" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="DB_Digam_NetflixModel.FK_MyList_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Digam_NetflixModel.FK_Rating_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Digam_NetflixModel.FK_Rental_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Digam_NetflixModel.FK_Movie_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Digam_NetflixModel.FK_MyList_Movie" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Digam_NetflixModel.FK_Rating_Movie" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Digam_NetflixModel.DirectorMovie" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Digam_NetflixModel.MovieActor" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

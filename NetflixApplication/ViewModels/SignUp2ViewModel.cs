@@ -87,7 +87,7 @@ namespace NetflixApplication.ViewModels
             if (email == 0)
             {
                 var acc = new Account { Account_FName = Account_Fname, Account_LName = Account_Lname, Account_Type = "User", Account_Email = Account_Email, Account_Password = MD5Hash(Base64Encode(Account_Password)) };
-                using (var db = new DB_Digam_NetfixEntities())
+                using (var db = new DB_Digam_NetflixEntities())
                 {
                         var account = db.Set<Account>();
                         account.Add(acc);
