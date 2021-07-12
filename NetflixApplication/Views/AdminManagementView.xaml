@@ -1,0 +1,151 @@
+﻿<Window x:Class="NetflixApplication.Views.AdminManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetflixApplication.Views"
+        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:NetflixApplication.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        Height="680" Width="1280"
+        Title="AdminManagementView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="ADMIN MANAGEMENTS" VerticalAlignment="Center" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="0"/>
+        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="2">
+            <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="150">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Account"  Width="25" Height="25"  VerticalAlignment="Center"/>
+                            <TextBlock Text="ACCOUNT" VerticalAlignment="Center" Margin="10 0"/>
+                        </StackPanel>                        
+                    </TabItem.Header>
+                    <ListView ItemsSource="{Binding ListAcounts}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Account_ID}" Header="ID"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Account_Email}" Header="EMAIL" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Account_Type}" Header="STATUS" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="150">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Movie" Width="25" Height="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="MOVIE" VerticalAlignment="Center" Margin="10 0"/>
+                        </StackPanel>                        
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView x:Name="listMovie" ItemsSource="{Binding ListMovies}" SelectedItem="{Binding SelectedMovie, Mode=OneWayToSource}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Movie_ID}" Header="ID"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Movie_Name}" Header="NAME" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Category.Category_Name}" Header="Category" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Movie_View}" Header="Views" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Grid Grid.Column="1" Margin="0 0 10 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.Resources>
+                                <Style  TargetType="TextBlock">
+                                    <Setter Property="Grid.Column" Value="1"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style> 
+                            </Grid.Resources>
+                            <Label Content="Name: " Grid.Row="0"/>
+                            <Label Content="Des: " Grid.Row="1"/>
+                            <Label Content="Length: " Grid.Row="2"/>
+                            <Label Content="Year: " Grid.Row="3"/>
+                            <Label Content="Poster: " Grid.Row="4"/>
+                            <Label Content="Movie: " Grid.Row="5"/>
+                            <Label Content="Category: " Grid.Row="6"/>
+
+                            <TextBlock Text="{Binding Movie_Name, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0"/>
+                            <TextBlock Text="{Binding Movie_Describe, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Movie_Lenght, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"/>
+                            <TextBlock Text="{Binding Movie_Year, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3"/>
+                            <TextBlock Text="{Binding Movie_Image, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4"/>
+                            <TextBlock Text="{Binding Movie_Trailer}" Grid.Row="5"/>
+                            <ComboBox DisplayMemberPath="Category_Name" ItemsSource="{Binding ListCategory}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      materialDesign:HintAssist.Hint="Category" IsEditable="True" Grid.Row="6" Grid.Column="1"/>
+                            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="7" HorizontalAlignment="Center" Margin="0 20 0 0">
+                                <Button Content="Add" x:Name="Add" Background="DarkGray" Width="100" Height="40" Foreground="White" Margin="20 0"/>
+                                <Button Content="Edit" x:Name="Edit" Background="DarkGray" Width="100" Height="40" Foreground="White" Margin="20 0"/>
+                                <Button Content="Delete" x:Name="Delete" Background="REd" Width="100" Height="40"  Foreground="White" Margin="20 0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>       
+                </TabItem>
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="150">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Movie"  Width="25" Height="25"  VerticalAlignment="Center"/>
+                            <TextBlock Text="CATEGORY" VerticalAlignment="Center" Margin="10 0"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox materialDesign:HintAssist.Hint="Category"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     VerticalAlignment="Center" Width="200" Margin="10"
+                                     Text="{Binding Category_Name}"/>
+                            <Button Content="Add" Command="{Binding AddCategoryCommand}" Background="OrangeRed" Foreground="White" Width="100" Margin="10"/>
+                            <Button Content="Edit" Command="{Binding EditCategoryCommand}" Background="OrangeRed" Foreground="White" Width="100" Margin="10"/>
+                            <Button Content="Delete" Command="{Binding DeleteCategoryCommand}" Background="OrangeRed" Foreground="White" Width="100" Margin="10"/>
+                        </StackPanel>
+                        <ListView x:Name="listCategory" ItemsSource="{Binding ListCategory}" SelectedItem="{Binding SelectedMovie, Mode=OneWayToSource}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Category_ID}" Header="ID"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Category_Name}" Header=" CATEGORY NAME" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>                    
+                </TabItem>
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="150">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Movie" Width="25" Height="25"  VerticalAlignment="Center"/>
+                            <TextBlock Text="REPORT" VerticalAlignment="Center" Margin="10 0"/>
+                        </StackPanel>
+                    </TabItem.Header>
+
+                </TabItem>
+            </TabControl>            
+        </Border>
+    </Grid>
+</Window>

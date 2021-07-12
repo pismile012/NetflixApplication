@@ -26,7 +26,7 @@ namespace NetflixApplication.Models
         private string movie = @"D:\DA - Video\Movie\";
         private string _P;
         private string _T;
-        private string _M;
+        
 
         public int Movie_ID { get; set; }
         public int Category_ID { get; set; }

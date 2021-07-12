@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:NetflixApplication"
              xmlns:v="clr-namespace:NetflixApplication.Views"
              xmlns:vm="clr-namespace:NetflixApplication.ViewModels"
-             StartupUri="Views/SignInView.xaml">
+             StartupUri="Views/AdminManagementView.xaml">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,8 +16,8 @@
             </ResourceDictionary.MergedDictionaries>            
             <ControlTemplate x:Key="errorTemplate">
                 <Border>
-                    <Grid >
-                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="OrangeRed" 
+                    <Grid>
+                        <TextBlock Background="{x:Null}" Text="{Binding [0].ErrorContent}" Foreground="Red" 
                                Margin="0,50,0,0" FontSize="15"/>
                     </Grid>
                 </Border>
